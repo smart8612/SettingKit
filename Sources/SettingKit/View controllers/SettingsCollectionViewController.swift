@@ -12,7 +12,7 @@ import Combine
 public final class SettingsCollectionViewController<ViewModelType: SettingPresentable>: UICollectionViewController {
     
     private let viewModel: ViewModelType
-    weak var settingDelegate: (any SettingCollectionViewControllerDelegate)?
+    public weak var settingDelegate: (any SettingCollectionViewControllerDelegate)?
     
     private var subscription: Cancellable?
     
@@ -69,8 +69,12 @@ public final class SettingsCollectionViewController<ViewModelType: SettingPresen
     }()
     
     public override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        cellOnTouched(on: indexPath)
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
+    
+    private func cellOnTouched(on indexPath: IndexPath) {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
-        
         if item.isGroup {
             settingDelegate?.provideSettingPage(of: item) { settingPage in
                 guard let settingPage = settingPage else { return }
@@ -81,8 +85,6 @@ public final class SettingsCollectionViewController<ViewModelType: SettingPresen
         } else {
             settingDelegate?.action(for: item)
         }
-        
-        collectionView.deselectItem(at: indexPath, animated: true)
     }
     
     private let cellRegistration = CellRegistration { (cell: Cell, indexPath: IndexPath, item: Item) in
