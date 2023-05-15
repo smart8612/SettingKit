@@ -54,9 +54,9 @@ public final class MainSettingsViewModel: SettingPresentable {
     
 }
 
-extension MainSettingsViewModel: SettingPresentableDelegate {
+extension MainSettingsViewModel: SettingCollectionViewControllerDelegate {
     
-    public func provideSettingViewController(of item: any SettingItemPresentable, presentAction: ((any SettingPage)?) -> Void) {
+    public func provideSettingPage(of item: any SettingItemPresentable, presentAction: ((any SettingPage)?) -> Void) {
         if item as! MainSettingsViewModel.Item == items[0] {
             presentAction(AppearanceSettingPage())
         }

@@ -66,9 +66,9 @@ public final class AppearanceSettingsViewModel: SettingPresentable {
     
 }
 
-extension AppearanceSettingsViewModel: SettingPresentableDelegate {
+extension AppearanceSettingsViewModel: SettingCollectionViewControllerDelegate {
     
-    public func provideSettingViewController(of item: any SettingItemPresentable, presentAction: ((any SettingPage)?) -> Void) {
+    public func provideSettingPage(of item: any SettingItemPresentable, presentAction: ((any SettingPage)?) -> Void) {
         presentAction(nil)
     }
     

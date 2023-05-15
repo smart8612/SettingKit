@@ -12,7 +12,7 @@ import Combine
 public final class SettingsCollectionViewController<ViewModelType: SettingPresentable>: UICollectionViewController {
     
     private let viewModel: ViewModelType
-    weak var settingDelegate: (any SettingPresentableDelegate)?
+    weak var settingDelegate: (any SettingCollectionViewControllerDelegate)?
     
     private var subscription: Cancellable?
     
@@ -75,7 +75,7 @@ public final class SettingsCollectionViewController<ViewModelType: SettingPresen
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
         
         if item.isGroup {
-            settingDelegate?.provideSettingViewController(of: item) { settingPage in
+            settingDelegate?.provideSettingPage(of: item) { settingPage in
                 guard let settingPage = settingPage else { return }
                 let viewController = settingPage.viewController
                 viewController.navigationItem.largeTitleDisplayMode = .never
