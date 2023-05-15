@@ -21,4 +21,6 @@ public struct AppearanceSettingPage: SettingPage {
         return viewController
     }
     
+    public init() {}
+    
 }
