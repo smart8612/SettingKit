@@ -88,27 +88,9 @@ public final class SettingsCollectionViewController<ViewModelType: SettingPresen
         collectionView.deselectItem(at: indexPath, animated: true)
     }
     
-    private let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, Item> {
-        (cell: UICollectionViewListCell, indexPath: IndexPath, item: Item) in
-        var contentConfigure = cell.defaultContentConfiguration()
-        contentConfigure.text = item.title
-        cell.contentConfiguration = contentConfigure
-        
-        var cellAccessories: [UICellAccessory] = []
-        
-        if item.isGroup == true {
-            cellAccessories.append(.disclosureIndicator())
-        }
-        
-        if item.isChecked == true {
-            cellAccessories.append(.checkmark())
-        }
-        
-        if let supplementaryTitle = item.description {
-            cellAccessories.append(.label(text: supplementaryTitle))
-        }
-        
-        cell.accessories = cellAccessories
+    private let cellRegistration = UICollectionView.CellRegistration<SettingCollectionViewCell<Item>, Item> {
+        (cell: SettingCollectionViewCell, indexPath: IndexPath, item: Item) in
+        cell.item = item
     }
     
     private let headerRegistration = UICollectionView.SupplementaryRegistration<UICollectionViewListCell>(
