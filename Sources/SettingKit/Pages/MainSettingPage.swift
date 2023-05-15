@@ -14,13 +14,6 @@ public struct MainSettingPage: SettingPage {
     
     public let viewModel = MainSettingsViewModel()
     
-    public var viewController: UIViewController {
-        let viewController = SettingsCollectionViewController(viewModel: viewModel)
-        viewController.settingDelegate = viewModel
-        viewController.title = title
-        return viewController
-    }
-    
     public init() {}
     
 }

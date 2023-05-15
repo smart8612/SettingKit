@@ -14,13 +14,6 @@ public struct AppearanceSettingPage: SettingPage {
     
     public let viewModel = AppearanceSettingsViewModel()
     
-    public var viewController: UIViewController {
-        let viewController = SettingsCollectionViewController(viewModel: viewModel)
-        viewController.settingDelegate = viewModel
-        viewController.title = title
-        return viewController
-    }
-    
     public init() {}
     
 }

@@ -10,6 +10,13 @@ import UIKit
 
 public extension SettingPage {
     
+    var viewController: UIViewController {
+        let viewController = SettingsCollectionViewController(viewModel: viewModel)
+        viewController.settingDelegate = viewModel as? any SettingCollectionViewControllerDelegate
+        viewController.title = title
+        return viewController
+    }
+    
     var viewControllerEmbeddedInNavigationController: UINavigationController {
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.title = title

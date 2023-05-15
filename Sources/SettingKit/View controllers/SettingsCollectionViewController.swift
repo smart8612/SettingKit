@@ -90,8 +90,8 @@ public final class SettingsCollectionViewController<ViewModelType: SettingPresen
     }
     
     private let headerRegistration = SuppementaryCellRegistration(
-        elementKind: UICollectionView.elementKindSectionHeader
-        , handler: { (_, _, _) in })
+        elementKind: UICollectionView.elementKindSectionHeader,
+        handler: { (_, _, _) in })
     
     private let footerRegistration = SuppementaryCellRegistration(
         elementKind: UICollectionView.elementKindSectionFooter,
@@ -137,11 +137,9 @@ public extension SettingsCollectionViewController {
     
     private var snapshot: Snapshot {
         var snapshot = Snapshot()
-        
         let settingItems = viewModel.items
-        
         settingItems.forEach { item in
-            let section = item.section as! ViewModelType.Section
+            guard let section = item.section as? Section else { return }
             if snapshot.indexOfSection(section) == .none {
                 snapshot.appendSections([section])
             }
