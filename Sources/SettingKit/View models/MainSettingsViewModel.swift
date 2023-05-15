@@ -57,7 +57,10 @@ public final class MainSettingsViewModel: SettingPresentable {
 extension MainSettingsViewModel: SettingCollectionViewControllerDelegate {
     
     public func provideSettingPage(of item: any SettingItemPresentable, presentAction: ((any SettingPage)?) -> Void) {
-        if item as! MainSettingsViewModel.Item == items[0] {
+        guard let item = item as? Item else { return }
+        let items = items
+        
+        if item == items[0] {
             presentAction(AppearanceSettingPage())
         }
     }

@@ -73,7 +73,7 @@ extension AppearanceSettingsViewModel: SettingCollectionViewControllerDelegate {
     }
     
     public func action(for item: any SettingItemPresentable) {
-        guard let item = item as? AppearanceSettingsViewModel.Item else { return }
+        guard let item = item as? Item else { return }
         let items = items
         
         if item == items[0] {
