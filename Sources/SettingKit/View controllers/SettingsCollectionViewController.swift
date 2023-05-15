@@ -85,17 +85,17 @@ public final class SettingsCollectionViewController<ViewModelType: SettingPresen
         collectionView.deselectItem(at: indexPath, animated: true)
     }
     
-    private let cellRegistration = UICollectionView.CellRegistration<Cell, Item> {
-        (cell: Cell, indexPath: IndexPath, item: Item) in
+    private let cellRegistration = CellRegistration { (cell: Cell, indexPath: IndexPath, item: Item) in
         cell.updateUI(with: item)
     }
     
-    private let headerRegistration = UICollectionView.SupplementaryRegistration<SupplementaryCell>(
+    private let headerRegistration = SuppementaryCellRegistration(
         elementKind: UICollectionView.elementKindSectionHeader
         , handler: { (_, _, _) in })
     
-    private let footerRegistration = UICollectionView.SupplementaryRegistration<SupplementaryCell>(
-        elementKind: UICollectionView.elementKindSectionFooter, handler: { (_, _, _) in })
+    private let footerRegistration = SuppementaryCellRegistration(
+        elementKind: UICollectionView.elementKindSectionFooter,
+        handler: { (_, _, _) in })
 
 }
 
@@ -110,6 +110,9 @@ public extension SettingsCollectionViewController {
     
     typealias Cell = SettingCollectionViewCell<Item>
     typealias SupplementaryCell = SettingSupplementaryCollectionViewCell<Section>
+    
+    typealias CellRegistration = UICollectionView.CellRegistration<Cell, Item>
+    typealias SuppementaryCellRegistration = UICollectionView.SupplementaryRegistration<SupplementaryCell>
     
 }
 
