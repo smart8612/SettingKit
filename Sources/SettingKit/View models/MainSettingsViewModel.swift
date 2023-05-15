@@ -20,6 +20,12 @@ public final class MainSettingsViewModel: SettingPresentable {
                 section: .general,
                 isGroup: true,
                 isChecked: false
+            ),
+            Item(
+                title: "About",
+                section: .general,
+                isGroup: true,
+                isChecked: false
             )
         ]
     }
@@ -62,6 +68,8 @@ extension MainSettingsViewModel: SettingCollectionViewControllerDelegate {
         
         if item == items[0] {
             presentAction(AppearanceSettingPage())
+        } else if item == items[1] {
+            presentAction(AboutSettingPage())
         }
     }
     

@@ -9,12 +9,12 @@ import UIKit
 import Combine
 
 
-public final class SettingsCollectionViewController<ViewModelType: SettingPresentable>: UICollectionViewController {
+final class SettingsCollectionViewController<ViewModelType: SettingPresentable>: UICollectionViewController {
     
     private let viewModel: ViewModelType
-    public weak var settingDelegate: (any SettingCollectionViewControllerDelegate)?
-    
     private var subscription: Cancellable?
+    
+    weak var settingDelegate: (any SettingCollectionViewControllerDelegate)?
     
     init(viewModel: ViewModelType) {
         self.viewModel = viewModel
@@ -30,13 +30,14 @@ public final class SettingsCollectionViewController<ViewModelType: SettingPresen
         fatalError("init(coder:) has not been implemented")
     }
     
-    public override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         updateStatus()
     }
     
-    public override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         configureSubscriber()
     }
     
@@ -68,7 +69,7 @@ public final class SettingsCollectionViewController<ViewModelType: SettingPresen
         return dataSource
     }()
     
-    public override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         cellOnTouched(on: indexPath)
         collectionView.deselectItem(at: indexPath, animated: true)
     }
@@ -102,7 +103,7 @@ public final class SettingsCollectionViewController<ViewModelType: SettingPresen
 }
 
 /// MARK : Typealisas
-public extension SettingsCollectionViewController {
+fileprivate extension SettingsCollectionViewController {
     
     typealias Section = ViewModelType.Section
     typealias Item = ViewModelType.Item
@@ -119,7 +120,7 @@ public extension SettingsCollectionViewController {
 }
 
 /// MARK : Manage UI hierarchy presentation
-public extension SettingsCollectionViewController {
+fileprivate extension SettingsCollectionViewController {
     
     private static func listLayout() -> UICollectionViewLayout {
         var config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
@@ -135,10 +136,11 @@ public extension SettingsCollectionViewController {
 }
 
 /// MARK : Manage UI status data
-public extension SettingsCollectionViewController {
+fileprivate extension SettingsCollectionViewController {
     
     private var snapshot: Snapshot {
         var snapshot = Snapshot()
+        
         let settingItems = viewModel.items
         settingItems.forEach { item in
             guard let section = item.section as? Section else { return }
@@ -156,4 +158,3 @@ public extension SettingsCollectionViewController {
     }
     
 }
-

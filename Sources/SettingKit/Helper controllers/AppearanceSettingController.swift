@@ -12,6 +12,8 @@ public struct AppearanceSettingController {
     
     private let preferences = UserDefaults.standard
     
+    public init() {}
+    
     var currentColorSchemaDescription: String {
         switch preferences.colorSchema {
         case .unspecified:
