@@ -18,6 +18,10 @@ public final class SettingCollectionViewCell<Item: SettingItemPresentable>: UICo
         }
     }
     
+    public func updateUI(with item: Item) {
+        self.item = item
+    }
+    
     public override func updateConfiguration(using state: UICellConfigurationState) {
         var contentConfigure = defaultContentConfiguration()
         contentConfigure.text = item?.title

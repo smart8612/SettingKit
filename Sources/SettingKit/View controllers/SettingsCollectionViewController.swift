@@ -59,11 +59,8 @@ public final class SettingsCollectionViewController<ViewModelType: SettingPresen
             
             let cell = collectionView.dequeueConfiguredReusableSupplementary(
                 using: (kind == UICollectionView.elementKindSectionHeader) ? self.headerRegistration:self.footerRegistration,
-                for: indexPath
-            )
-            var contentConfig = cell.defaultContentConfiguration()
-            contentConfig.text = (kind == UICollectionView.elementKindSectionHeader) ? section.title:section.description
-            cell.contentConfiguration = contentConfig
+                for: indexPath)
+            cell.updateUI(kind: kind, with: section)
             
             return cell
         }
@@ -90,16 +87,15 @@ public final class SettingsCollectionViewController<ViewModelType: SettingPresen
     
     private let cellRegistration = UICollectionView.CellRegistration<Cell, Item> {
         (cell: Cell, indexPath: IndexPath, item: Item) in
-        cell.item = item
+        cell.updateUI(with: item)
     }
     
-    private let headerRegistration = UICollectionView.SupplementaryRegistration<UICollectionViewListCell>(
+    private let headerRegistration = UICollectionView.SupplementaryRegistration<SupplementaryCell>(
         elementKind: UICollectionView.elementKindSectionHeader
         , handler: { (_, _, _) in })
     
-    private let footerRegistration = UICollectionView.SupplementaryRegistration<UICollectionViewListCell>(
-        elementKind: UICollectionView.elementKindSectionFooter
-        , handler: { (_, _, _) in })
+    private let footerRegistration = UICollectionView.SupplementaryRegistration<SupplementaryCell>(
+        elementKind: UICollectionView.elementKindSectionFooter, handler: { (_, _, _) in })
 
 }
 
@@ -113,6 +109,7 @@ public extension SettingsCollectionViewController {
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
     
     typealias Cell = SettingCollectionViewCell<Item>
+    typealias SupplementaryCell = SettingSupplementaryCollectionViewCell<Section>
     
 }
 
