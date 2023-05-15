@@ -8,7 +8,7 @@
 import UIKit
 
 
-extension UserDefaults {
+public extension UserDefaults {
     
     var colorSchema: UIUserInterfaceStyle {
         set {

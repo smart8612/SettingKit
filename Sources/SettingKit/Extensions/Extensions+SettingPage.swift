@@ -8,7 +8,7 @@
 import UIKit
 
 
-extension SettingPage {
+public extension SettingPage {
     
     var viewControllerEmbeddedInNavigationController: UINavigationController {
         let navigationController = UINavigationController(rootViewController: viewController)

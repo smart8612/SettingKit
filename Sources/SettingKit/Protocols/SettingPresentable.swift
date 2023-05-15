@@ -7,7 +7,8 @@
 
 import Foundation
 
-protocol SettingPresentable {
+
+public protocol SettingPresentable {
     
     associatedtype Section: SettingSectionPresentable
     associatedtype Item: SettingItemPresentable

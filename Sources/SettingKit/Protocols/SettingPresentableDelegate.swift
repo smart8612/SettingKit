@@ -7,7 +7,8 @@
 
 import Foundation
 
-protocol SettingPresentableDelegate: AnyObject {
+
+public protocol SettingPresentableDelegate: AnyObject {
     
     func provideSettingViewController(of item: any SettingItemPresentable, presentAction: ((any SettingPage)?) -> Void)
     

@@ -8,13 +8,13 @@
 import UIKit
 
 
-struct MainSettingPage: SettingPage {
+public struct MainSettingPage: SettingPage {
     
-    var title: String? { "Setting" }
+    public var title: String? { "Setting" }
     
-    let viewModel = MainSettingsViewModel()
+    public let viewModel = MainSettingsViewModel()
     
-    var viewController: UIViewController {
+    public var viewController: UIViewController {
         let viewController = SettingsCollectionViewController(viewModel: viewModel)
         viewController.settingDelegate = viewModel
         viewController.title = title

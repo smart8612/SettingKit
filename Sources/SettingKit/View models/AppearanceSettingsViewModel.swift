@@ -8,11 +8,11 @@
 import Foundation
 
 
-final class AppearanceSettingsViewModel: SettingPresentable {
+public final class AppearanceSettingsViewModel: SettingPresentable {
     
     private var appearanceSettingController = AppearanceSettingController()
     
-    var items: [Item] {
+    public var items: [Item] {
         [
             Item(
                 title: "System Default",
@@ -35,17 +35,17 @@ final class AppearanceSettingsViewModel: SettingPresentable {
         ]
     }
     
-    enum Section: SettingSectionPresentable {
+    public enum Section: SettingSectionPresentable {
         case theme
         
-        var title: String? {
+        public var title: String? {
             switch self {
             case .theme:
                 return "Theme"
             }
         }
         
-        var description: String? {
+        public var description: String? {
             switch self {
             case .theme:
                 return "Configure app's color theme schema."
@@ -53,14 +53,14 @@ final class AppearanceSettingsViewModel: SettingPresentable {
         }
     }
     
-    struct Item: SettingItemPresentable {
+    public struct Item: SettingItemPresentable {
         
-        var title: String
-        var description: String?
-        var section: Section
+        public var title: String
+        public var description: String?
+        public var section: Section
         
-        var isGroup: Bool
-        var isChecked: Bool
+        public var isGroup: Bool
+        public var isChecked: Bool
         
     }
     
@@ -68,11 +68,11 @@ final class AppearanceSettingsViewModel: SettingPresentable {
 
 extension AppearanceSettingsViewModel: SettingPresentableDelegate {
     
-    func provideSettingViewController(of item: any SettingItemPresentable, presentAction: ((any SettingPage)?) -> Void) {
+    public func provideSettingViewController(of item: any SettingItemPresentable, presentAction: ((any SettingPage)?) -> Void) {
         presentAction(nil)
     }
     
-    func action(for item: any SettingItemPresentable) {
+    public func action(for item: any SettingItemPresentable) {
         guard let item = item as? AppearanceSettingsViewModel.Item else { return }
         let items = items
         

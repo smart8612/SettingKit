@@ -8,7 +8,7 @@
 import UIKit
 
 
-protocol SettingPage {
+public protocol SettingPage {
     
     associatedtype ViewModelType: SettingPresentable
     

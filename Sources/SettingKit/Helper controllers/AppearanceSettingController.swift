@@ -8,7 +8,7 @@
 import UIKit
 
 
-struct AppearanceSettingController {
+public struct AppearanceSettingController {
     
     private let preferences = UserDefaults.standard
     

@@ -8,7 +8,7 @@
 import Foundation
 
 
-protocol SettingSectionPresentable: Hashable {
+public protocol SettingSectionPresentable: Hashable {
     
     var title: String? { get }
     var description: String? { get }

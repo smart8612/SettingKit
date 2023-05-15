@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 
-final class SettingsCollectionViewController<ViewModelType: SettingPresentable>: UICollectionViewController {
+public final class SettingsCollectionViewController<ViewModelType: SettingPresentable>: UICollectionViewController {
     
     private let viewModel: ViewModelType
     weak var settingDelegate: (any SettingPresentableDelegate)?
@@ -30,13 +30,13 @@ final class SettingsCollectionViewController<ViewModelType: SettingPresentable>:
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         updateStatus()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         configureSubscriber()
     }
     
@@ -71,7 +71,7 @@ final class SettingsCollectionViewController<ViewModelType: SettingPresentable>:
         return dataSource
     }()
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
         
         if item.isGroup {
@@ -122,7 +122,7 @@ final class SettingsCollectionViewController<ViewModelType: SettingPresentable>:
 }
 
 /// MARK : Typealisas
-extension SettingsCollectionViewController {
+public extension SettingsCollectionViewController {
     
     typealias Section = ViewModelType.Section
     typealias Item = ViewModelType.Item
@@ -133,7 +133,7 @@ extension SettingsCollectionViewController {
 }
 
 /// MARK : Manage UI hierarchy presentation
-extension SettingsCollectionViewController {
+public extension SettingsCollectionViewController {
     
     private static func listLayout() -> UICollectionViewLayout {
         var config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
@@ -149,7 +149,7 @@ extension SettingsCollectionViewController {
 }
 
 /// MARK : Manage UI status data
-extension SettingsCollectionViewController {
+public extension SettingsCollectionViewController {
     
     private var snapshot: Snapshot {
         var snapshot = Snapshot()

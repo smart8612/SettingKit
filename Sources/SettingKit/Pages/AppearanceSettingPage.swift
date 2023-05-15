@@ -8,13 +8,13 @@
 import UIKit
 
 
-struct AppearanceSettingPage: SettingPage {
+public struct AppearanceSettingPage: SettingPage {
     
-    var title: String? { "Appearance" }
+    public var title: String? { "Appearance" }
     
-    let viewModel = AppearanceSettingsViewModel()
+    public let viewModel = AppearanceSettingsViewModel()
     
-    var viewController: UIViewController {
+    public var viewController: UIViewController {
         let viewController = SettingsCollectionViewController(viewModel: viewModel)
         viewController.settingDelegate = viewModel
         viewController.title = title

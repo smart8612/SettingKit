@@ -8,7 +8,7 @@
 import Foundation
 
 
-protocol SettingItemPresentable: Hashable {
+public protocol SettingItemPresentable: Hashable {
     
     associatedtype Section: SettingSectionPresentable
     
