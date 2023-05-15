@@ -8,7 +8,7 @@
 import UIKit
 
 
-final class SettingCollectionViewCell<Item: SettingItemPresentable>: UICollectionViewListCell {
+public final class SettingCollectionViewCell<Item: SettingItemPresentable>: UICollectionViewListCell {
     
     var item: Item? {
         didSet {
@@ -18,7 +18,7 @@ final class SettingCollectionViewCell<Item: SettingItemPresentable>: UICollectio
         }
     }
     
-    override func updateConfiguration(using state: UICellConfigurationState) {
+    public override func updateConfiguration(using state: UICellConfigurationState) {
         var contentConfigure = defaultContentConfiguration()
         contentConfigure.text = item?.title
         contentConfiguration = contentConfigure

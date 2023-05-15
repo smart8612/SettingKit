@@ -88,8 +88,8 @@ public final class SettingsCollectionViewController<ViewModelType: SettingPresen
         collectionView.deselectItem(at: indexPath, animated: true)
     }
     
-    private let cellRegistration = UICollectionView.CellRegistration<SettingCollectionViewCell<Item>, Item> {
-        (cell: SettingCollectionViewCell, indexPath: IndexPath, item: Item) in
+    private let cellRegistration = UICollectionView.CellRegistration<Cell, Item> {
+        (cell: Cell, indexPath: IndexPath, item: Item) in
         cell.item = item
     }
     
@@ -111,6 +111,8 @@ public extension SettingsCollectionViewController {
     
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
+    
+    typealias Cell = SettingCollectionViewCell<Item>
     
 }
 
