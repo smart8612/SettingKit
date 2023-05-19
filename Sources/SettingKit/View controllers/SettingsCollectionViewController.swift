@@ -46,13 +46,16 @@ final class SettingsCollectionViewController<ViewModelType: SettingPresentable>:
             collectionView.dequeueConfiguredReusableCell(using: self.cellRegistration, for: indexPath, item: item)
         }
         
-        dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
+        dataSource.supplementaryViewProvider = { [weak self] (collectionView, kind, indexPath) in
+            guard let supplementaryRegistration = self?.chooseSupplementaryRegistration(kind: kind) else {
+                return UICollectionViewCell()
+            }
+            
             let currentSnapshot = dataSource.snapshot()
             let section = currentSnapshot.sectionIdentifiers[indexPath.section]
             
             let cell = collectionView.dequeueConfiguredReusableSupplementary(
-                using: (kind == UICollectionView.elementKindSectionHeader) ? self.headerRegistration:self.footerRegistration,
-                for: indexPath)
+                using: supplementaryRegistration, for: indexPath)
             cell.updateUI(kind: kind, with: section)
             
             return cell
@@ -123,6 +126,10 @@ fileprivate extension SettingsCollectionViewController {
     
     private func configureUI() {
         collectionView.setCollectionViewLayout(Self.listLayout(), animated: false)
+    }
+    
+    private func chooseSupplementaryRegistration(kind: String) -> SuppementaryCellRegistration {
+        (kind == UICollectionView.elementKindSectionHeader) ? headerRegistration : footerRegistration
     }
     
 }
