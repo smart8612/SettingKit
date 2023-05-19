@@ -65,11 +65,11 @@ final class SettingsCollectionViewController<ViewModelType: SettingPresentable>:
     }()
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        cellOnTouched(on: indexPath)
+        actionForCell(on: indexPath)
         collectionView.deselectItem(at: indexPath, animated: true)
     }
     
-    private func cellOnTouched(on indexPath: IndexPath) {
+    private func actionForCell(on indexPath: IndexPath) {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
         if item.isGroup {
             settingDelegate?.provideSettingPage(of: item) { settingPage in
