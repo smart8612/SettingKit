@@ -21,11 +21,6 @@ final class SettingsCollectionViewController<ViewModelType: SettingPresentable>:
         super.init(collectionViewLayout: Self.listLayout())
     }
     
-    init?(coder: NSCoder, viewModel: ViewModelType) {
-        self.viewModel = viewModel
-        super.init(coder: coder)
-    }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
