@@ -28,20 +28,17 @@ final class SettingsCollectionViewController<ViewModelType: SettingPresentable>:
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        updateStatus()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configureSubscriber()
+        configureSubscription()
+        updateStatus()
     }
     
-    private func configureSubscriber() {
-        subscription = NotificationCenter.default.publisher(
-            for: UserDefaults.didChangeNotification
-        ).sink { [weak self] _ in
-            self?.updateStatus()
-        }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        cancelSubscription()
     }
     
     private lazy var dataSource: DataSource = {
@@ -150,6 +147,23 @@ fileprivate extension SettingsCollectionViewController {
     
     private func updateStatus() {
         dataSource.apply(snapshot, animatingDifferences: true)
+    }
+    
+}
+
+/// MARK : Setting Combine Subscription
+fileprivate extension SettingsCollectionViewController {
+    
+    private func configureSubscription() {
+        subscription = NotificationCenter.default.publisher(
+            for: UserDefaults.didChangeNotification
+        ).sink { [weak self] _ in
+            self?.updateStatus()
+        }
+    }
+    
+    private func cancelSubscription() {
+        subscription?.cancel()
     }
     
 }
