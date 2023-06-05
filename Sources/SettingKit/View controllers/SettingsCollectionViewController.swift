@@ -32,6 +32,7 @@ final class SettingsCollectionViewController<ViewModelType: SettingPresentable>:
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        dataSource = createDataSource()
         configureSubscription()
         updateStatus()
     }
@@ -39,10 +40,12 @@ final class SettingsCollectionViewController<ViewModelType: SettingPresentable>:
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         cancelSubscription()
+        dataSource = nil
     }
     
-    private lazy var dataSource: DataSource = { [weak self] in
-        guard let collectionView = self?.collectionView else { fatalError() }
+    private var dataSource: DataSource?
+    
+    private func createDataSource() -> DataSource {
         let dataSource = DataSource(collectionView: collectionView) { [weak self] (collectionView, indexPath, item) -> UICollectionViewCell? in
             guard let self = self else { return nil }
             return self.collectionView.dequeueConfiguredReusableCell(using: self.cellRegistration, for: indexPath, item: item)
@@ -64,7 +67,7 @@ final class SettingsCollectionViewController<ViewModelType: SettingPresentable>:
         }
         
         return dataSource
-    }()
+    }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         actionForCell(on: indexPath)
@@ -72,7 +75,7 @@ final class SettingsCollectionViewController<ViewModelType: SettingPresentable>:
     }
     
     private func actionForCell(on indexPath: IndexPath) {
-        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        guard let item = dataSource?.itemIdentifier(for: indexPath) else { return }
         if item.isGroup {
             settingDelegate?.provideSettingPage(of: item) { [weak self] settingPage in
                 guard let settingPage = settingPage else { return }
@@ -155,7 +158,7 @@ fileprivate extension SettingsCollectionViewController {
     }
     
     private func updateStatus() {
-        dataSource.apply(snapshot, animatingDifferences: true)
+        dataSource?.apply(snapshot, animatingDifferences: true)
     }
     
 }
