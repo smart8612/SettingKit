@@ -46,23 +46,30 @@ final class SettingsCollectionViewController<ViewModelType: SettingPresentable>:
     private var dataSource: DataSource?
     
     private func createDataSource() -> DataSource {
-        let dataSource = DataSource(collectionView: collectionView) { [weak self] (collectionView, indexPath, item) -> UICollectionViewCell? in
+        DataSource(collectionView: collectionView) { [weak self] (collectionView, indexPath, item) -> UICollectionViewCell? in
             guard let self = self else { return nil }
             return self.collectionView.dequeueConfiguredReusableCell(using: self.cellRegistration, for: indexPath, item: item)
         }
-        
-        dataSource.supplementaryViewProvider = { [weak self] (collectionView, kind, indexPath) in
+    }
+    
+    private func configureDataSource() {
+        dataSource?.supplementaryViewProvider = { [weak self] (collectionView, kind, indexPath) in
             guard let supplementaryRegistration = self?.chooseSupplementaryRegistration(kind: kind) else { return nil }
-            let currentSnapshot = dataSource.snapshot()
-            let section = currentSnapshot.sectionIdentifiers[indexPath.section]
             let cell = collectionView.dequeueConfiguredReusableSupplementary(
                 using: supplementaryRegistration, for: indexPath
             )
-            cell.updateUI(kind: kind, with: section)
+            
+            if let currentSnapshot = self?.currentSnapshot {
+                let section = currentSnapshot.sectionIdentifiers[indexPath.section]
+                cell.updateUI(kind: kind, with: section)
+            }
+            
             return cell
         }
-        
-        return dataSource
+    }
+    
+    private var currentSnapshot: Snapshot? {
+        dataSource?.snapshot()
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
