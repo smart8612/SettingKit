@@ -33,6 +33,7 @@ final class SettingsCollectionViewController<ViewModelType: SettingPresentable>:
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         dataSource = createDataSource()
+        configureDataSource()
         configureSubscription()
         updateStatus()
     }
