@@ -72,11 +72,11 @@ final class SettingsCollectionViewController<ViewModelType: SettingPresentable>:
     private func actionForCell(on indexPath: IndexPath) {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
         if item.isGroup {
-            settingDelegate?.provideSettingPage(of: item) { settingPage in
+            settingDelegate?.provideSettingPage(of: item) { [weak self] settingPage in
                 guard let settingPage = settingPage else { return }
                 let viewController = settingPage.viewController
                 viewController.navigationItem.largeTitleDisplayMode = .never
-                navigationController?.pushViewController(viewController, animated: true)
+                self?.navigationController?.pushViewController(viewController, animated: true)
             }
         } else {
             settingDelegate?.action(for: item)
