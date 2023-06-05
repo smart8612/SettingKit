@@ -41,9 +41,11 @@ final class SettingsCollectionViewController<ViewModelType: SettingPresentable>:
         cancelSubscription()
     }
     
-    private lazy var dataSource: DataSource = {
-        let dataSource = DataSource(collectionView: collectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
-            collectionView.dequeueConfiguredReusableCell(using: self.cellRegistration, for: indexPath, item: item)
+    private lazy var dataSource: DataSource = { [weak self] in
+        guard let collectionView = self?.collectionView else { fatalError() }
+        let dataSource = DataSource(collectionView: collectionView) { [weak self] (collectionView, indexPath, item) -> UICollectionViewCell? in
+            guard let self = self else { return nil }
+            return self.collectionView.dequeueConfiguredReusableCell(using: self.cellRegistration, for: indexPath, item: item)
         }
         
         dataSource.supplementaryViewProvider = { [weak self] (collectionView, kind, indexPath) in
