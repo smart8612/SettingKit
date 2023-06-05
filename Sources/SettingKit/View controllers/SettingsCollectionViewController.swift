@@ -52,17 +52,13 @@ final class SettingsCollectionViewController<ViewModelType: SettingPresentable>:
         }
         
         dataSource.supplementaryViewProvider = { [weak self] (collectionView, kind, indexPath) in
-            guard let supplementaryRegistration = self?.chooseSupplementaryRegistration(kind: kind) else {
-                return UICollectionViewCell()
-            }
-            
+            guard let supplementaryRegistration = self?.chooseSupplementaryRegistration(kind: kind) else { return nil }
             let currentSnapshot = dataSource.snapshot()
             let section = currentSnapshot.sectionIdentifiers[indexPath.section]
-            
             let cell = collectionView.dequeueConfiguredReusableSupplementary(
-                using: supplementaryRegistration, for: indexPath)
+                using: supplementaryRegistration, for: indexPath
+            )
             cell.updateUI(kind: kind, with: section)
-            
             return cell
         }
         
