@@ -1,13 +1,5 @@
 import SwiftUI
 
-
-public struct SettingKit {
-    public private(set) var text = "Hello, World!"
-
-    public init() {
-    }
-}
-
 struct SettingView: UIViewControllerRepresentable {
     
     typealias UIViewControllerType = UINavigationController
