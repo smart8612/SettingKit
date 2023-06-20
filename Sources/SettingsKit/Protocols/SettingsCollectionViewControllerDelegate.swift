@@ -1,5 +1,5 @@
 //
-//  SettingCollectionViewControllerDelegate.swift
+//  SettingsCollectionViewControllerDelegate.swift
 //  
 //
 //  Created by JeongTaek Han on 2023/05/15.
@@ -8,7 +8,7 @@
 import Foundation
 
 
-public protocol SettingCollectionViewControllerDelegate: AnyObject {
+public protocol SettingsCollectionViewControllerDelegate: AnyObject {
     
     func provideSettingPage(of item: any SettingItemPresentable, presentAction: ((any SettingPage)?) -> Void)
     

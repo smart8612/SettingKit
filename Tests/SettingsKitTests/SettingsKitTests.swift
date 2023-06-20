@@ -1,5 +1,5 @@
 import XCTest
-@testable import SettingKit
+@testable import SettingsKit
 
 final class SettingsKitTests: XCTestCase {
     func testExample() throws {

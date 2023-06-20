@@ -14,7 +14,7 @@ final class SettingsCollectionViewController<ViewModelType: SettingPresentable>:
     private let viewModel: ViewModelType
     private var subscription: Cancellable?
     
-    weak var settingDelegate: (any SettingCollectionViewControllerDelegate)?
+    weak var settingDelegate: (any SettingsCollectionViewControllerDelegate)?
     
     init(viewModel: ViewModelType) {
         self.viewModel = viewModel

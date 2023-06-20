@@ -12,7 +12,7 @@ public extension SettingPage {
     
     var viewController: UIViewController {
         let viewController = SettingsCollectionViewController(viewModel: viewModel)
-        viewController.settingDelegate = viewModel as? any SettingCollectionViewControllerDelegate
+        viewController.settingDelegate = viewModel as? any SettingsCollectionViewControllerDelegate
         viewController.title = title
         return viewController
     }

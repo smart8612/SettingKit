@@ -60,7 +60,7 @@ public final class MainSettingsViewModel: SettingPresentable {
     
 }
 
-extension MainSettingsViewModel: SettingCollectionViewControllerDelegate {
+extension MainSettingsViewModel: SettingsCollectionViewControllerDelegate {
     
     public func provideSettingPage(of item: any SettingItemPresentable, presentAction: ((any SettingPage)?) -> Void) {
         guard let item = item as? Item else { return }
