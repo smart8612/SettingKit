@@ -8,7 +8,7 @@
 
 ## 📹 동작 영상
 
-| <img src="https://github.com/smart8612/SettingsKit/assets/25794814/e475ef82-a6c1-4429-b16d-c62c888aaa8e" alt="Simulator Screen Recording - iPhone 14 Pro - 2023-06-20 at 15 48 58" style="zoom: 33%;" /> |
+| ![Simulator Screen Recording - iPhone 14 Pro - 2023-06-20 at 15 48 58](https://github.com/smart8612/SettingsKit/assets/25794814/ed730dec-75d0-4c74-ab03-98a28b1c779e) |
 | :----------------------------------------------------------: |
 
 ## 📰 Related Articles
