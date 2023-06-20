@@ -8,7 +8,7 @@
 import Foundation
 
 
-public final class AboutSettingsViewModel: SettingPresentable {
+public final class AboutSettingsViewModel: SettingsPresentable {
     
     public var items: [Item] {
         [
@@ -29,7 +29,7 @@ public final class AboutSettingsViewModel: SettingPresentable {
         ]
     }
     
-    public enum Section: SettingSectionPresentable {
+    public enum Section: SettingsSectionPresentable {
         case general
         
         public var title: String? {
@@ -42,7 +42,7 @@ public final class AboutSettingsViewModel: SettingPresentable {
         public var description: String? { nil }
     }
     
-    public struct Item: SettingItemPresentable {
+    public struct Item: SettingsItemPresentable {
         
         public var title: String
         public var description: String?

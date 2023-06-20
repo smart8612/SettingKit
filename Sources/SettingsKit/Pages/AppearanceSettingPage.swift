@@ -8,7 +8,7 @@
 import UIKit
 
 
-public struct AppearanceSettingPage: SettingPage {
+public struct AppearanceSettingPage: SettingsPage {
     
     public var title: String? { "Appearance" }
     

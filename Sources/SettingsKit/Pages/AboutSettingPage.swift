@@ -8,7 +8,7 @@
 import Foundation
 
 
-public struct AboutSettingPage: SettingPage {
+public struct AboutSettingPage: SettingsPage {
     
     public var title: String? { "About" }
     

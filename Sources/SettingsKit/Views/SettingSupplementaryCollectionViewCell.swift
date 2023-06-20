@@ -8,7 +8,7 @@
 import UIKit
 
 
-public final class SettingSupplementaryCollectionViewCell<Section: SettingSectionPresentable>: UICollectionViewListCell {
+public final class SettingSupplementaryCollectionViewCell<Section: SettingsSectionPresentable>: UICollectionViewListCell {
     
     var section: Section? {
         didSet {

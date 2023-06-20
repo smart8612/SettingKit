@@ -8,7 +8,7 @@
 import Foundation
 
 
-public final class MainSettingsViewModel: SettingPresentable {
+public final class MainSettingsViewModel: SettingsPresentable {
     
     private var appearanceSettingController = AppearanceSettingController()
     
@@ -30,7 +30,7 @@ public final class MainSettingsViewModel: SettingPresentable {
         ]
     }
     
-    public enum Section: SettingSectionPresentable {
+    public enum Section: SettingsSectionPresentable {
         case general
         
         public var title: String? {
@@ -48,7 +48,7 @@ public final class MainSettingsViewModel: SettingPresentable {
         }
     }
     
-    public struct Item: SettingItemPresentable {
+    public struct Item: SettingsItemPresentable {
         
         public var title: String
         public var description: String?
@@ -62,7 +62,7 @@ public final class MainSettingsViewModel: SettingPresentable {
 
 extension MainSettingsViewModel: SettingsCollectionViewControllerDelegate {
     
-    public func provideSettingPage(of item: any SettingItemPresentable, presentAction: ((any SettingPage)?) -> Void) {
+    public func provideSettingPage(of item: any SettingsItemPresentable, presentAction: ((any SettingsPage)?) -> Void) {
         guard let item = item as? Item else { return }
         let items = items
         
@@ -73,6 +73,6 @@ extension MainSettingsViewModel: SettingsCollectionViewControllerDelegate {
         }
     }
     
-    public func action(for item: any SettingItemPresentable) { }
+    public func action(for item: any SettingsItemPresentable) { }
     
 }

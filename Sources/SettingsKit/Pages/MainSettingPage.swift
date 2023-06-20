@@ -8,7 +8,7 @@
 import UIKit
 
 
-public struct MainSettingPage: SettingPage {
+public struct MainSettingPage: SettingsPage {
     
     public var title: String? { "Setting" }
     

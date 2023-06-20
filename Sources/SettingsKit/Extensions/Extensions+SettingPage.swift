@@ -8,7 +8,7 @@
 import UIKit
 
 
-public extension SettingPage {
+public extension SettingsPage {
     
     var viewController: UIViewController {
         let viewController = SettingsCollectionViewController(viewModel: viewModel)

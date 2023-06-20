@@ -9,7 +9,7 @@ import UIKit
 import Combine
 
 
-final class SettingsCollectionViewController<ViewModelType: SettingPresentable>: UICollectionViewController {
+final class SettingsCollectionViewController<ViewModelType: SettingsPresentable>: UICollectionViewController {
     
     private let viewModel: ViewModelType
     private var subscription: Cancellable?

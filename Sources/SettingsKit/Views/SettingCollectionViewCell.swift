@@ -8,7 +8,7 @@
 import UIKit
 
 
-public final class SettingCollectionViewCell<Item: SettingItemPresentable>: UICollectionViewListCell {
+public final class SettingCollectionViewCell<Item: SettingsItemPresentable>: UICollectionViewListCell {
     
     var item: Item? {
         didSet {

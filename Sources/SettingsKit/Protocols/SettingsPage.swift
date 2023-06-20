@@ -1,5 +1,5 @@
 //
-//  SettingPage.swift
+//  SettingsPage.swift
 //  
 //
 //  Created by JeongTaek Han on 2023/05/15.
@@ -8,9 +8,9 @@
 import UIKit
 
 
-public protocol SettingPage {
+public protocol SettingsPage {
     
-    associatedtype ViewModelType: SettingPresentable
+    associatedtype ViewModelType: SettingsPresentable
     
     var title: String? { get }
     var viewModel: ViewModelType { get }

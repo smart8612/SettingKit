@@ -10,8 +10,8 @@ import Foundation
 
 public protocol SettingsCollectionViewControllerDelegate: AnyObject {
     
-    func provideSettingPage(of item: any SettingItemPresentable, presentAction: ((any SettingPage)?) -> Void)
+    func provideSettingPage(of item: any SettingsItemPresentable, presentAction: ((any SettingsPage)?) -> Void)
     
-    func action(for item: any SettingItemPresentable)
+    func action(for item: any SettingsItemPresentable)
     
 }

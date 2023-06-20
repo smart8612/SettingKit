@@ -1,5 +1,5 @@
 //
-//  SettingItemPresentable.swift
+//  SettingsItemPresentable.swift
 //  
 //
 //  Created by JeongTaek Han on 2023/05/15.
@@ -8,9 +8,9 @@
 import Foundation
 
 
-public protocol SettingItemPresentable: Hashable {
+public protocol SettingsItemPresentable: Hashable {
     
-    associatedtype Section: SettingSectionPresentable
+    associatedtype Section: SettingsSectionPresentable
     
     var title: String { get }
     var description: String? { get }
