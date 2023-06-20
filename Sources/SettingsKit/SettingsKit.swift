@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SettingView: UIViewControllerRepresentable {
+struct SettingsView: UIViewControllerRepresentable {
     
     typealias UIViewControllerType = UINavigationController
     
@@ -20,7 +20,7 @@ struct SettingView: UIViewControllerRepresentable {
 struct SettingKit_Previews: PreviewProvider {
     
     static var previews: some View {
-        SettingView()
+        SettingsView()
     }
     
 }
