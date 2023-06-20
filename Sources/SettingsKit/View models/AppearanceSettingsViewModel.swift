@@ -10,7 +10,7 @@ import Foundation
 
 public final class AppearanceSettingsViewModel: SettingsPresentable {
     
-    private var appearanceSettingController = AppearanceSettingController()
+    private var appearanceSettingController = AppearanceSettingsController()
     
     public var items: [Item] {
         [

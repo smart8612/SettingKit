@@ -115,8 +115,8 @@ fileprivate extension SettingsCollectionViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
     
-    typealias Cell = SettingCollectionViewCell<Item>
-    typealias SupplementaryCell = SettingSupplementaryCollectionViewCell<Section>
+    typealias Cell = SettingsCollectionViewCell<Item>
+    typealias SupplementaryCell = SettingsSupplementaryCollectionViewCell<Section>
     
     typealias CellRegistration = UICollectionView.CellRegistration<Cell, Item>
     typealias SuppementaryCellRegistration = UICollectionView.SupplementaryRegistration<SupplementaryCell>

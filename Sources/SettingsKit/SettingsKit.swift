@@ -4,7 +4,7 @@ struct SettingsView: UIViewControllerRepresentable {
     
     typealias UIViewControllerType = UINavigationController
     
-    private let mainPage = MainSettingPage()
+    private let mainPage = MainSettingsPage()
     
     func makeUIViewController(context: Context) -> UIViewControllerType {
         mainPage.viewControllerEmbeddedInNavigationController

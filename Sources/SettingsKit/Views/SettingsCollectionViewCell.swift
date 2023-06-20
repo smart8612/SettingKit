@@ -1,5 +1,5 @@
 //
-//  SettingCollectionViewCell.swift
+//  SettingsCollectionViewCell.swift
 //  
 //
 //  Created by JeongTaek Han on 2023/05/15.
@@ -8,7 +8,7 @@
 import UIKit
 
 
-public final class SettingCollectionViewCell<Item: SettingsItemPresentable>: UICollectionViewListCell {
+public final class SettingsCollectionViewCell<Item: SettingsItemPresentable>: UICollectionViewListCell {
     
     var item: Item? {
         didSet {

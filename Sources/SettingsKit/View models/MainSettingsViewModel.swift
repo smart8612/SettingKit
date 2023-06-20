@@ -10,7 +10,7 @@ import Foundation
 
 public final class MainSettingsViewModel: SettingsPresentable {
     
-    private var appearanceSettingController = AppearanceSettingController()
+    private var appearanceSettingController = AppearanceSettingsController()
     
     public var items: [Item] {
         [
@@ -67,9 +67,9 @@ extension MainSettingsViewModel: SettingsCollectionViewControllerDelegate {
         let items = items
         
         if item == items[0] {
-            presentAction(AppearanceSettingPage())
+            presentAction(AppearanceSettingsPage())
         } else if item == items[1] {
-            presentAction(AboutSettingPage())
+            presentAction(AboutSettingsPage())
         }
     }
     

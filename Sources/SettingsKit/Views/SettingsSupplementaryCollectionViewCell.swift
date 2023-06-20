@@ -1,5 +1,5 @@
 //
-//  SettingSupplementaryCollectionViewCell.swift
+//  SettingsSupplementaryCollectionViewCell.swift
 //  
 //
 //  Created by JeongTaek Han on 2023/05/15.
@@ -8,7 +8,7 @@
 import UIKit
 
 
-public final class SettingSupplementaryCollectionViewCell<Section: SettingsSectionPresentable>: UICollectionViewListCell {
+public final class SettingsSupplementaryCollectionViewCell<Section: SettingsSectionPresentable>: UICollectionViewListCell {
     
     var section: Section? {
         didSet {
