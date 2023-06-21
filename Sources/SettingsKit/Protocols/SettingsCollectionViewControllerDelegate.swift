@@ -19,6 +19,8 @@ public protocol SettingsCollectionViewControllerDelegate: AnyObject {
     ///   - presentAction: The closure that can be used to present the settings page.
     func provideSettingPage(of item: any SettingsItemPresentable, presentAction: ((any SettingsPage)?) -> Void)
     
+    /// Provides the action which is associated with chosen settings item.
+    /// - Parameter item: The chosen setting item which is sended by view controller.
     func action(for item: any SettingsItemPresentable)
     
 }
