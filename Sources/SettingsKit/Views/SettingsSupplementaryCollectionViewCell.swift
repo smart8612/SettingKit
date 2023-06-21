@@ -20,12 +20,12 @@ final class SettingsSupplementaryCollectionViewCell<Section: SettingsSectionPres
     
     var kind: String = ""
     
-    public func updateUI(kind: String, with section: Section) {
+    func updateUI(kind: String, with section: Section) {
         self.kind = kind
         self.section = section
     }
     
-    public override func updateConfiguration(using state: UICellConfigurationState) {
+    override func updateConfiguration(using state: UICellConfigurationState) {
         var contentConfig = defaultContentConfiguration()
         
         if kind == UICollectionView.elementKindSectionHeader {

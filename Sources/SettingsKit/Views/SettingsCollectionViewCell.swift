@@ -18,11 +18,11 @@ final class SettingsCollectionViewCell<Item: SettingsItemPresentable>: UICollect
         }
     }
     
-    public func updateUI(with item: Item) {
+    func updateUI(with item: Item) {
         self.item = item
     }
     
-    public override func updateConfiguration(using state: UICellConfigurationState) {
+    override func updateConfiguration(using state: UICellConfigurationState) {
         var contentConfigure = defaultContentConfiguration()
         contentConfigure.text = item?.title
         contentConfiguration = contentConfigure
