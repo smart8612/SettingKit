@@ -8,9 +8,9 @@
 import Foundation
 
 
-public final class AppearanceSettingsViewModel: SettingPresentable {
+public final class AppearanceSettingsViewModel: SettingsPresentable {
     
-    private var appearanceSettingController = AppearanceSettingController()
+    private var appearanceSettingController = AppearanceSettingsController()
     
     public var items: [Item] {
         [
@@ -35,7 +35,7 @@ public final class AppearanceSettingsViewModel: SettingPresentable {
         ]
     }
     
-    public enum Section: SettingSectionPresentable {
+    public enum Section: SettingsSectionPresentable {
         case theme
         
         public var title: String? {
@@ -53,7 +53,7 @@ public final class AppearanceSettingsViewModel: SettingPresentable {
         }
     }
     
-    public struct Item: SettingItemPresentable {
+    public struct Item: SettingsItemPresentable {
         
         public var title: String
         public var description: String?
@@ -66,13 +66,13 @@ public final class AppearanceSettingsViewModel: SettingPresentable {
     
 }
 
-extension AppearanceSettingsViewModel: SettingCollectionViewControllerDelegate {
+extension AppearanceSettingsViewModel: SettingsCollectionViewControllerDelegate {
     
-    public func provideSettingPage(of item: any SettingItemPresentable, presentAction: ((any SettingPage)?) -> Void) {
+    public func provideSettingPage(of item: any SettingsItemPresentable, presentAction: ((any SettingsPage)?) -> Void) {
         presentAction(nil)
     }
     
-    public func action(for item: any SettingItemPresentable) {
+    public func action(for item: any SettingsItemPresentable) {
         guard let item = item as? Item else { return }
         let items = items
         

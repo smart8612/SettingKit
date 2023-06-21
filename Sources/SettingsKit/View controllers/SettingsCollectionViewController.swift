@@ -9,12 +9,12 @@ import UIKit
 import Combine
 
 
-final class SettingsCollectionViewController<ViewModelType: SettingPresentable>: UICollectionViewController {
+final class SettingsCollectionViewController<ViewModelType: SettingsPresentable>: UICollectionViewController {
     
     private let viewModel: ViewModelType
     private var subscription: Cancellable?
     
-    weak var settingDelegate: (any SettingCollectionViewControllerDelegate)?
+    weak var settingDelegate: (any SettingsCollectionViewControllerDelegate)?
     
     init(viewModel: ViewModelType) {
         self.viewModel = viewModel
@@ -115,8 +115,8 @@ fileprivate extension SettingsCollectionViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
     
-    typealias Cell = SettingCollectionViewCell<Item>
-    typealias SupplementaryCell = SettingSupplementaryCollectionViewCell<Section>
+    typealias Cell = SettingsCollectionViewCell<Item>
+    typealias SupplementaryCell = SettingsSupplementaryCollectionViewCell<Section>
     
     typealias CellRegistration = UICollectionView.CellRegistration<Cell, Item>
     typealias SuppementaryCellRegistration = UICollectionView.SupplementaryRegistration<SupplementaryCell>

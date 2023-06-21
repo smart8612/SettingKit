@@ -1,11 +1,10 @@
 import XCTest
-@testable import SettingKit
+@testable import SettingsKit
 
-final class SettingKitTests: XCTestCase {
+final class SettingsKitTests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(SettingKit().text, "Hello, World!")
     }
 }

@@ -1,5 +1,5 @@
 //
-//  SettingCollectionViewCell.swift
+//  SettingsCollectionViewCell.swift
 //  
 //
 //  Created by JeongTaek Han on 2023/05/15.
@@ -8,7 +8,7 @@
 import UIKit
 
 
-public final class SettingCollectionViewCell<Item: SettingItemPresentable>: UICollectionViewListCell {
+final class SettingsCollectionViewCell<Item: SettingsItemPresentable>: UICollectionViewListCell {
     
     var item: Item? {
         didSet {
@@ -18,11 +18,11 @@ public final class SettingCollectionViewCell<Item: SettingItemPresentable>: UICo
         }
     }
     
-    public func updateUI(with item: Item) {
+    func updateUI(with item: Item) {
         self.item = item
     }
     
-    public override func updateConfiguration(using state: UICellConfigurationState) {
+    override func updateConfiguration(using state: UICellConfigurationState) {
         var contentConfigure = defaultContentConfiguration()
         contentConfigure.text = item?.title
         contentConfiguration = contentConfigure

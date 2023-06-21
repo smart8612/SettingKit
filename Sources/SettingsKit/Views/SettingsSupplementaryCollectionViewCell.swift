@@ -1,5 +1,5 @@
 //
-//  SettingSupplementaryCollectionViewCell.swift
+//  SettingsSupplementaryCollectionViewCell.swift
 //  
 //
 //  Created by JeongTaek Han on 2023/05/15.
@@ -8,7 +8,7 @@
 import UIKit
 
 
-public final class SettingSupplementaryCollectionViewCell<Section: SettingSectionPresentable>: UICollectionViewListCell {
+final class SettingsSupplementaryCollectionViewCell<Section: SettingsSectionPresentable>: UICollectionViewListCell {
     
     var section: Section? {
         didSet {
@@ -20,12 +20,12 @@ public final class SettingSupplementaryCollectionViewCell<Section: SettingSectio
     
     var kind: String = ""
     
-    public func updateUI(kind: String, with section: Section) {
+    func updateUI(kind: String, with section: Section) {
         self.kind = kind
         self.section = section
     }
     
-    public override func updateConfiguration(using state: UICellConfigurationState) {
+    override func updateConfiguration(using state: UICellConfigurationState) {
         var contentConfig = defaultContentConfiguration()
         
         if kind == UICollectionView.elementKindSectionHeader {
